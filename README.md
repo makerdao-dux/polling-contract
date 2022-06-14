@@ -1,15 +1,12 @@
-# Basic Sample Hardhat Project
+# L2 Polling Contract
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+### Deployment
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
+The following command deploys the contract to the arbitrum network, using the details found in the hardhat.config file
 ```
+npx hardhat run --network arbitrum scripts/run.js
+```
+
+### Addresses
+
+ArbRinkeby: https://testnet.arbiscan.io/address/0x6a5112210c0C5fF26250453Be0baD073519EcB97

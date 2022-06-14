@@ -1,8 +1,4 @@
-// SPDX-License-Identifier: UNLICENSED
-
 pragma solidity ^0.6.6;
-
-import "hardhat/console.sol";
 
 contract PollingEvents {
     event PollCreated(
@@ -32,6 +28,12 @@ contract PollingEvents {
 contract Polling is PollingEvents {
     uint256 public npoll = 1000;
 
+    // -- math --
+    function add(uint256 x, uint256 y) internal pure returns (uint256 z) {
+        z = x + y;
+        require(z >= x);
+    }
+
     function createPoll(uint256 startDate, uint256 endDate, string calldata multiHash, string calldata url)
         external
     {
@@ -54,6 +56,11 @@ contract Polling is PollingEvents {
         external
     {
         emit PollWithdrawn(msg.sender, block.number, pollId);
+    }
+
+    function increasePollNumber(uint256 amount) external {
+        require(amount <= 30);
+        npoll = add(npoll, amount);
     }
 
     function vote(uint256[] calldata pollIds, uint256[] calldata optionIds, bytes calldata signature)
