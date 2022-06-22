@@ -9,4 +9,4 @@ npx hardhat run --network arbitrum scripts/run.js
 
 ### Addresses
 
-ArbRinkeby: https://testnet.arbiscan.io/address/0x6a5112210c0C5fF26250453Be0baD073519EcB97
+ArbRinkeby: https://testnet.arbiscan.io/address/0x067Fc8812aEBa3f813D4DA49C7e2898E731d67d9#code
