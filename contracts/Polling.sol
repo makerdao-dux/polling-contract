@@ -28,7 +28,7 @@ contract Polling is PollingEvents {
 
     string public constant name = "MakerDAO Polling";
     string public constant version = "Arbitrum.1";
-    uint256 public constant chainId  = 1; //votes are counted towards mainnet polls
+    uint256 public constant chainId = 5; //votes are counted towards goerli polls
 
     uint256 public npoll = 1000;
     mapping (address => uint) public nonces;
@@ -41,8 +41,8 @@ contract Polling is PollingEvents {
 
     // --- EIP712 niceties ---
     bytes32 public DOMAIN_SEPARATOR;
-    // bytes32 public constant VOTE_TYPEHASH = keccak256("Vote(address voter,uint256 nonce, uint256 expiry, uint256[] calldata pollIds, uint256[] calldata optionIds)");
-    bytes32 public constant VOTE_TYPEHASH = 0x3a32d9ff21845937462ef54f60a7e43f80718634057cd914d865b96e11a28dbd;
+    // bytes32 public constant VOTE_TYPEHASH = keccak256("Vote(address voter,uint256 nonce,uint256 expiry,uint256[] pollIds,uint256[] optionIds)");
+    bytes32 public constant VOTE_TYPEHASH = 0x017323f802fc67a11561f00703f58a9ee72807fab7bac8f581da97c5d13d0e96;
 
     constructor() public {
         DOMAIN_SEPARATOR = keccak256(abi.encode(
