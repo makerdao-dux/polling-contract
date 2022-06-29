@@ -104,8 +104,8 @@ contract Polling is PollingEvents {
                                      voter,
                                      nonce,
                                      expiry,
-                                     pollIds,
-                                     optionIds))
+                                     keccak256(abi.encodePacked(pollIds)),
+                                     keccak256(abi.encodePacked(optionIds))))
         ));
         require(voter != address(0), "Polling/invalid-address");
         require(expiry == 0 || now <= expiry, "Polling/signature-expired");
