@@ -103,12 +103,14 @@ contract Polling is PollingEvents {
                 keccak256(abi.encode(VOTE_TYPEHASH,
                                      voter,
                                      nonce,
-                                     expiry))
+                                     expiry,
+                                     pollIds,
+                                     optionIds))
         ));
         require(voter != address(0), "Polling/invalid-address");
-        require(voter == ecrecover(digest, v, r, s), "Polling/invalid-signature");
         require(expiry == 0 || now <= expiry, "Polling/signature-expired");
         require(nonce == nonces[voter]++, "Polling/invalid-nonce");
+        require(voter == ecrecover(digest, v, r, s), "Polling/invalid-signature");
 
         for (uint i = 0; i < pollIds.length; i++) {
             emit Voted(voter, pollIds[i], optionIds[i]);
