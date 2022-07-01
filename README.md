@@ -6,6 +6,8 @@ Allows for voting in polls on L2. Casting a vote emits a `Voted` event just like
 
 In the future we will likely stop using the L1 polling contract for poll creation, and switch to this L2 contract. The `npoll` variable is set to a high number so as to avoid poll number collision with the mainnet polling contract. The `PollCreated` and `PollWithdrawn` events emitted are just like the events emitted from the mainnet polling contract.
 
+The `chainId` variable for the Arbitrum Rinkeby contract should be 5 (goerli), since this is the contracts that would be used to vote on the polls shown when a user is on the Goerli network. Similarly, for the production Arbitrum contract, the chainId should be 1.
+
 L1 polling contracts:
 gitub repo: https://github.com/makerdao/symbolic-voting
 batch polling contract: https://etherscan.io/address/0xD3A9FE267852281a1e6307a1C37CDfD76d39b133#code
