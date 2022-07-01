@@ -30,14 +30,8 @@ contract Polling is PollingEvents {
     string public constant version = "Arbitrum.1";
     uint256 public constant chainId = 5; //votes are counted towards goerli polls
 
-    uint256 public npoll = 1000;
+    uint256 public npoll = 1500;
     mapping (address => uint) public nonces;
-
-    // -- math --
-    function add(uint256 x, uint256 y) internal pure returns (uint256 z) {
-        z = x + y;
-        require(z >= x);
-    }
 
     // --- EIP712 niceties ---
     bytes32 public DOMAIN_SEPARATOR;
@@ -76,11 +70,6 @@ contract Polling is PollingEvents {
         external
     {
         emit PollWithdrawn(msg.sender, block.number, pollId);
-    }
-
-    function increasePollNumber(uint256 amount) external {
-        require(amount <= 30);
-        npoll = add(npoll, amount);
     }
 
     function vote(uint256[] calldata pollIds, uint256[] calldata optionIds)
